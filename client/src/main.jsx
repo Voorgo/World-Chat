@@ -8,6 +8,9 @@ import {
   Route,
 } from "react-router-dom";
 import { Root, Home, Register, Login } from "./pages";
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
 
 const router = createBrowserRouter(
   createRoutesFromElements(

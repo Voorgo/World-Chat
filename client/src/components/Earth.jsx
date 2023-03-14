@@ -6,6 +6,7 @@ import globeFragmentShader from "../assets/globe/fragment.glsl";
 import atmosphereVertexShader from "../assets/atmosphere/vertex.glsl";
 import atmosphereFragmentShader from "../assets/atmosphere/fragment.glsl";
 import { useLoader } from "@react-three/fiber";
+import Column from "./Column";
 
 function Globe({ radius }) {
   const globeTexture = useLoader(
@@ -14,7 +15,7 @@ function Globe({ radius }) {
   );
   return (
     <mesh rotation={[0, -Math.PI / 2, 0]}>
-      <sphereGeometry args={[Math.min(window.innerWidth / 1300, 1), 64, 64]} />
+      <sphereGeometry args={[radius, 64, 64]} />
       <shaderMaterial
         receiveShadow
         attach="material"
@@ -35,7 +36,7 @@ function Globe({ radius }) {
 function Atmosphere({ radius }) {
   return (
     <mesh>
-      <sphereGeometry args={[Math.min(window.innerWidth / 1300, 1), 64, 64]} />
+      <sphereGeometry args={[radius, 64, 64]} />
       <shaderMaterial
         attach="material"
         args={[
@@ -54,23 +55,15 @@ function Atmosphere({ radius }) {
 function Earth() {
   const earthRef = useRef();
   const [radius, setRadius] = useState(
-    window.innerWidth < 640
-      ? window.innerWidth / 500
-      : window.innerWidth < 768
-      ? window.innerWidth / 600
-      : Math.min(window.innerWidth / 1300, 1)
+    window.innerWidth < 639
+      ? window.innerWidth / 700
+      : Math.min(window.innerWidth / 1000, 1)
   );
 
   // Resize for responsive
   const onWindowResize = () => {
     const width = window.innerWidth;
-    setRadius(
-      width < 640
-        ? width / 500
-        : width < 768
-        ? width / 600
-        : Math.min(width / 1300, 1)
-    );
+    setRadius(width < 639 ? width / 700 : Math.min(width / 1000, 1));
   };
 
   // Listener resize events
@@ -85,6 +78,7 @@ function Earth() {
     <group ref={earthRef}>
       <Globe radius={radius} />
       <Atmosphere radius={radius} />
+      <Column radius={radius} lat={44.4} long={26.0833} />
     </group>
   );
 }
