@@ -56,14 +56,14 @@ function Earth() {
   const earthRef = useRef();
   const [radius, setRadius] = useState(
     window.innerWidth < 639
-      ? window.innerWidth / 700
+      ? window.innerWidth / 650
       : Math.min(window.innerWidth / 1000, 1)
   );
 
   // Resize for responsive
   const onWindowResize = () => {
     const width = window.innerWidth;
-    setRadius(width < 639 ? width / 700 : Math.min(width / 1000, 1));
+    setRadius(width < 640 ? width / 650 : Math.min(width / 1000, 1));
   };
 
   // Listener resize events

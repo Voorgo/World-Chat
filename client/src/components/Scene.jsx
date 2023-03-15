@@ -20,9 +20,11 @@ function Scene() {
           dampingFactor={0.1}
           enablePan={false}
           rotateSpeed={0.2}
-          enableZoom={false}
+          enableZoom={true}
           autoRotate={true}
           autoRotateSpeed={1.6}
+          minZoom={250}
+          maxZoom={650}
         />
         <Suspense fallback={null}>
           <Earth />
