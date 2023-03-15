@@ -1,14 +1,14 @@
-import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import CreateRoomButton from "./CreateRoomButton";
+import CreateRoomModal from "./CreateRoomModal";
 
 const Sidebar = ({ user }) => {
-  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
   const logout = async () => {
     try {
       await axios.delete("http://localhost:5000/logout");
-      navigate("/login");
     } catch (error) {
       console.log(error);
     }
@@ -17,19 +17,20 @@ const Sidebar = ({ user }) => {
   return (
     <aside
       id="default-sidebar"
-      className="absolute top-0 left-0 z-40 h-screen w-64 max-w-[16rem] -translate-x-full transition-transform sm:relative sm:translate-x-0"
+      className="relative w-full transition-transform sm:top-0 sm:h-screen sm:w-auto"
       aria-label="Sidebar"
     >
-      <div className="h-full w-64 overflow-y-auto  bg-gray-800 px-3 py-4">
-        <ul className="space-y-2">
-          <li>
+      <CreateRoomModal isOpen={isOpen} setIsOpen={setIsOpen} />
+      <div className="w-full overflow-y-auto bg-gray-800 px-3 py-1 sm:h-full sm:w-64 sm:py-4">
+        <ul className="flex items-center justify-between sm:block sm:space-y-2">
+          <li className="basis-full">
             <Link
               to="#"
-              className="flex items-center rounded-lg p-2 text-base font-normal  text-white hover:bg-gray-700"
+              className="flex flex-col items-center rounded-lg p-2 text-base font-normal text-white  hover:bg-gray-700 sm:flex-row"
             >
               <svg
                 aria-hidden="true"
-                className="h-6 w-6 flex-shrink-0  text-gray-400 transition  duration-75 group-hover:text-white"
+                className="h-5 w-5 flex-shrink-0 text-gray-400 transition  duration-75 group-hover:text-white  sm:h-6 sm:w-6"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -40,37 +41,37 @@ const Sidebar = ({ user }) => {
                   clipRule="evenodd"
                 ></path>
               </svg>
-              <span className="ml-3">{user.name}</span>
+              <span className="sm:ml-3">{user.name}</span>
             </Link>
           </li>
-          <li>
+          <li className="basis-full">
             <a
               href="#"
-              className="flex items-center rounded-lg p-2 text-base font-normal  text-white hover:bg-gray-700"
+              className="flex flex-col items-center rounded-lg p-2 text-base font-normal text-white  hover:bg-gray-700 sm:flex-row"
             >
               <svg
                 aria-hidden="true"
-                className="h-6 w-6 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-white"
+                className="h-5 w-5 flex-shrink-0 text-gray-400 transition duration-75 group-hover:text-white sm:h-6 sm:w-6"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
               </svg>
-              <span className="ml-3 flex-1 whitespace-nowrap">Rooms</span>
-              <span className="ml-3 inline-flex h-3 w-3 items-center justify-center rounded-full  bg-blue-900 p-3 text-sm  font-medium text-blue-300">
+              <span className="flex-1 whitespace-nowrap sm:ml-3">Rooms</span>
+              <span className="ml-3 hidden h-3 w-3 items-center justify-center rounded-full bg-blue-900 p-3  text-sm font-medium text-blue-300  sm:inline-flex">
                 3
               </span>
             </a>
           </li>
-          <li>
+          {/* <li className="basis-full">
             <Link
               to="/login"
-              className="flex items-center rounded-lg p-2 text-base font-normal  text-white hover:bg-gray-700"
+              className="flex flex-col items-center rounded-lg p-2 text-base font-normal text-white  hover:bg-gray-700 sm:flex-row"
             >
               <svg
                 aria-hidden="true"
-                className="h-6 w-6 flex-shrink-0  text-gray-400 transition duration-75 group-hover:text-white"
+                className="h-5 w-5 flex-shrink-0 text-gray-400 transition  duration-75 group-hover:text-white sm:h-6 sm:w-6"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -81,17 +82,17 @@ const Sidebar = ({ user }) => {
                   clipRule="evenodd"
                 ></path>
               </svg>
-              <span className="ml-3 flex-1 whitespace-nowrap">Sign In</span>
+              <span className="flex-1 whitespace-nowrap sm:ml-3">Sign In</span>
             </Link>
           </li>
-          <li>
+          <li className="basis-full">
             <Link
               to="/register"
-              className="flex items-center rounded-lg p-2 text-base font-normal  text-white hover:bg-gray-700"
+              className="flex flex-col items-center rounded-lg p-2 text-base font-normal text-white  hover:bg-gray-700 sm:flex-row"
             >
               <svg
                 aria-hidden="true"
-                className="h-6 w-6 flex-shrink-0  text-gray-400 transition  duration-75 group-hover:text-white"
+                className="h-5 w-5 flex-shrink-0 text-gray-400 transition  duration-75 group-hover:text-white  sm:h-6 sm:w-6"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -102,18 +103,17 @@ const Sidebar = ({ user }) => {
                   clipRule="evenodd"
                 ></path>
               </svg>
-              <span className="ml-3 flex-1 whitespace-nowrap">Sign Up</span>
+              <span className="flex-1 whitespace-nowrap sm:ml-3">Sign Up</span>
             </Link>
-          </li>
-          <li>
-            <Link
-              to="#"
+          </li> */}
+          <li className="basis-full">
+            <div
               onClick={logout}
-              className="flex items-center rounded-lg p-2 text-base font-normal  text-white hover:bg-gray-700"
+              className="flex cursor-pointer flex-col items-center rounded-lg p-2 text-base font-normal text-white  hover:bg-gray-700 sm:flex-row"
             >
               <svg
                 aria-hidden="true"
-                className="h-6 w-6 flex-shrink-0  text-gray-400 transition  duration-75 group-hover:text-white"
+                className="h-5 w-5 flex-shrink-0 text-gray-400 transition  duration-75 group-hover:text-white  sm:h-6 sm:w-6"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -124,9 +124,10 @@ const Sidebar = ({ user }) => {
                   clipRule="evenodd"
                 ></path>
               </svg>
-              <span className="ml-3 flex-1 whitespace-nowrap">Sign Out</span>
-            </Link>
+              <span className="flex-1 whitespace-nowrap sm:ml-3">Sign Out</span>
+            </div>
           </li>
+          <CreateRoomButton setIsOpen={setIsOpen} />
         </ul>
       </div>
     </aside>
