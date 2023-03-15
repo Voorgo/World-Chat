@@ -9,7 +9,6 @@ const Home = () => {
   const [user, setUser] = useState({});
   const [token, setToken] = useState("");
   const [expire, setExpire] = useState("");
-  const [users, setUsers] = useState([]);
   const navigate = useNavigate();
 
   const refreshToken = async () => {
@@ -31,7 +30,6 @@ const Home = () => {
   };
 
   const axiosJWT = axios.create();
-
   axiosJWT.interceptors.request.use(
     async (config) => {
       const currentDate = new Date();
@@ -56,21 +54,11 @@ const Home = () => {
 
   useEffect(() => {
     refreshToken();
-    // getUsers();
   }, []);
-
-  // const getUsers = async () => {
-  //   const response = await axiosJWT.get("http://localhost:5000/users", {
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   });
-  //   setUsers(response.data);
-  // };
 
   return (
     <div className="h-[100vh] w-full bg-gradient-to-b from-[#272D41] via-[#000519] to-[#0e1516]">
-      <div className="flex h-full w-full">
+      <div className="relative flex h-full w-full flex-col-reverse sm:flex-row">
         <Sidebar user={user} />
         <Scene />
       </div>
