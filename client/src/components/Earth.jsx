@@ -7,6 +7,8 @@ import atmosphereVertexShader from "../assets/atmosphere/vertex.glsl";
 import atmosphereFragmentShader from "../assets/atmosphere/fragment.glsl";
 import { useLoader } from "@react-three/fiber";
 import Column from "./Column";
+import { v4 as uuidv4 } from "uuid";
+import { DataContext } from "../context/AuthContext";
 
 function Globe({ radius }) {
   const globeTexture = useLoader(
@@ -52,21 +54,21 @@ function Atmosphere({ radius }) {
   );
 }
 
-function Earth() {
+function Earth({ setIsOpen, setCountry, setRotate }) {
+  const { data } = DataContext();
   const earthRef = useRef();
+
   const [radius, setRadius] = useState(
     window.innerWidth < 639
       ? window.innerWidth / 650
       : Math.min(window.innerWidth / 1000, 1)
   );
 
-  // Resize for responsive
   const onWindowResize = () => {
     const width = window.innerWidth;
     setRadius(width < 640 ? width / 650 : Math.min(width / 1000, 1));
   };
 
-  // Listener resize events
   useEffect(() => {
     addEventListener("resize", onWindowResize, false);
 
@@ -78,7 +80,16 @@ function Earth() {
     <group ref={earthRef}>
       <Globe radius={radius} />
       <Atmosphere radius={radius} />
-      <Column radius={radius} lat={44.4} long={26.0833} />
+      {data.map((obj) => (
+        <Column
+          radius={radius}
+          setRotate={setRotate}
+          setIsOpen={setIsOpen}
+          setCountry={setCountry}
+          locationAndRooms={obj}
+          key={uuidv4()}
+        />
+      ))}
     </group>
   );
 }

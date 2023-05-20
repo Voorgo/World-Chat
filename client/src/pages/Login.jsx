@@ -24,13 +24,14 @@ const Login = () => {
         email: email,
         password: password,
       });
-      navigate("/");
+      navigate("/", { replace: true });
     } catch (error) {
       if (error.response) {
         setError(error.response.data.msg);
       }
     }
   };
+
   return (
     <div className="mx-auto flex h-screen items-center justify-center overflow-hidden bg-gradient-to-b from-[#272D41] via-[#000519] to-[#0e1516] px-0 xs:p-5">
       <div className="z-20 flex w-full max-w-[25rem] flex-col gap-4 bg-white px-4 py-2 xs:rounded-lg xs:py-12 xs:px-12">
