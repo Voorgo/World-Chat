@@ -16,7 +16,8 @@ const PORT = process.env.PORT || 3030;
 const socketIO = new Server(httpServer, {
   cors: {
     origin: "http://localhost:5173",
-    credentials: true
+    credentials: true,
+     methods: ["GET", "POST"]
   }
 });
 
