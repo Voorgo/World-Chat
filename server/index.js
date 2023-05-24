@@ -19,7 +19,11 @@ const socketIO = new Server(httpServer, {
   },
 });
 
-app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
+app.use(cors({
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept', 'x-client-key', 'x-client-token', 'x-client-secret', 'Authorization'],
+    credentials: true));
 app.use(cookieParser());
 app.use(express.json());
 app.use(router);
