@@ -20,10 +20,12 @@ const socketIO = new Server(httpServer, {
 });
 
 app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept', 'x-client-key', 'x-client-token', 'x-client-secret', 'Authorization'],
+    origin: 'http://localhost:5173',
     credentials: true}));
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
 app.use(cookieParser());
 app.use(express.json());
 app.use(router);
