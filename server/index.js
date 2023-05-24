@@ -149,4 +149,4 @@ socketIO.on("connection", (socket) => {
   socket.on("disconnect", () => {});
 });
 
-httpServer.listen(PORT, () => console.log('Server running at port ${PORT}`));
+httpServer.listen(PORT, () => console.log(`Server running at port ${PORT}`));
