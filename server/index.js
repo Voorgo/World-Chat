@@ -13,14 +13,9 @@ let rooms = [];
 const app = express();
 const httpServer = createServer(app);
 const PORT = process.env.PORT || 5000;
-const socketIO = new Server(httpServer, {
-  cors: {
-    origins: '*:*',
-    credentials: true,
-  }
-});
+const socketIO = new Server(httpServer);
 
-app.use(cors({credentials: true, origin: true}));
+app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 app.use(router);
