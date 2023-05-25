@@ -88,3 +88,13 @@ export const Logout = async (req, res) => {
   res.clearCookie("refreshToken");
   return res.sendStatus(200);
 };
+
+export const Admins = async (req, res) => {
+   const user = await Users.findAll({
+      where: {
+        admin: true,
+      },
+    });
+    if (!user[0]) return res.sendStatus(204);
+  return res.json({user});
+}
