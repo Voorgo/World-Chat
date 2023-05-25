@@ -22,7 +22,7 @@ const socketIO = new Server(httpServer, {
 
 app.use(cors({
     origin: 'https://world-chat.netlify.app',
-    credentials: true}));
+    methods: ['GET','POST','DELETE','UPDATE','PUT']}));
 app.use(cookieParser());
 app.use(express.json());
 app.use(router);
