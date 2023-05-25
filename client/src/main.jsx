@@ -8,11 +8,7 @@ import {
   Route,
 } from "react-router-dom";
 import { Root, Home, Register, Login, Chat } from "./pages";
-import axios from "axios";
 
-axios.defaults.withCredentials = true;
-axios.defaults.baseURL = 'https://world-chat.onrender.com';
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
