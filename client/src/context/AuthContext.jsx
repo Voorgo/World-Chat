@@ -12,7 +12,7 @@ const Provider = ({ children }) => {
 
   const refreshToken = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/token");
+      const response = await axios.get("https://world-chat.onrender.com/token");
       if (!response.data.accessToken) {
         setUser({
           name: "Guest",
