@@ -20,7 +20,7 @@ const Login = () => {
   const auth = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/login", {
+      await axios.post("https://world-chat.onrender.com/login", {
         email: email,
         password: password,
       });
