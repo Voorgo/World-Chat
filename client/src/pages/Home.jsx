@@ -19,6 +19,7 @@ const Home = () => {
   return (
     <div className="h-[100vh] w-full bg-gradient-to-b from-[#272D41] via-[#000519] to-[#0e1516]">
       <div className="relative flex h-full w-full flex-col-reverse sm:flex-row">
+    <button onClick={() => console.log(user)}>user</button>
         <Sidebar />
         <Scene />
       </div>
