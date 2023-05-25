@@ -12,7 +12,7 @@ const CHAT_BOT = "ChatBot";
 let rooms = [];
 const app = express();
 const httpServer = createServer(app);
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.PORT || 5000;
 const socketIO = new Server(httpServer, {
   cors: {
     origins: '*:*',
