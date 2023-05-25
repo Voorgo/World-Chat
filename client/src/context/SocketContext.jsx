@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import {io} from "socket.io-client";
 
-const socket = io("https://world-chat.onrender.com");
+const socket = io("https://world-chat.onrender.com", { transports : ['websocket'] });
 const SocketContext = createContext();
 
 export function useSocket() {
