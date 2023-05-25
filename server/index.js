@@ -20,10 +20,11 @@ const socketIO = new Server(httpServer, {
   }
 });
 
-app.use(cors({credentials: true, origin: 'https://world-chat.netlify.app/'}));
+app.use(cors({credentials: true, origin: true}));
 app.use(cookieParser());
 app.use(express.json());
 app.use(router);
+
 
 socketIO.on("connection", (socket) => {
   socket.on("render", () => {
