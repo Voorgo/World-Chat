@@ -16,19 +16,13 @@ const PORT = process.env.PORT || 3030;
 const socketIO = new Server(httpServer, {
   cors: {
     origins: '*:*',
-      transports: ['polling'], 
     credentials: true,
-     methods: ["GET", "POST"]
   }
 });
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://world-chat.netlify.app',
     credentials: true}));
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:5173");
-  next();
-});
 app.use(cookieParser());
 app.use(express.json());
 app.use(router);
