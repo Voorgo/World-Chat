@@ -15,7 +15,7 @@ const httpServer = createServer(app);
 const PORT = process.env.PORT || 5000;
 const socketIO = new Server(httpServer, {
  cors: {
-    origin: "https://world-chat.netlify.app/",
+    origin: "http://localhost:5173/",
   }
 });
 
