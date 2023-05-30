@@ -14,7 +14,7 @@ const app = express();
 const httpServer = createServer(app);
 const PORT = process.env.PORT || 5000;
 app.use(function(req, res, next) {
-      const allowedOrigins = ['http://localhost:5173', 'http://world-chat.onrender.com', 'https://world-chat.onrender.com'];
+      const allowedOrigins = ['http://localhost:5173', 'http://world-chat.onrender.com', 'https://world-chat.onrender.com', 'https://world-chat.netlify.app'];
       const origin = req.headers.origin;
       if (allowedOrigins.includes(origin)) {
            res.setHeader('Access-Control-Allow-Origin', origin);
