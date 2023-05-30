@@ -19,8 +19,13 @@ const socketIO = new Server(httpServer, {
    credentials:true, 
   }
 });
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,
+    optionSuccessStatus:200
+}
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
 app.use(router);
