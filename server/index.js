@@ -13,6 +13,17 @@ let rooms = [];
 const app = express();
 const httpServer = createServer(app);
 const PORT = process.env.PORT || 5000;
+app.use(function(req, res, next) {
+      const allowedOrigins = ['http://localhost:5173', 'http://world-chat.onrender.com', 'https://world-chat.onrender.com'];
+      const origin = req.headers.origin;
+      if (allowedOrigins.includes(origin)) {
+           res.setHeader('Access-Control-Allow-Origin', origin);
+      }
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+      res.header("Access-Control-Allow-credentials", true);
+      res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, UPDATE");
+      next();
+    });
 const socketIO = new Server(httpServer, {
  cors: {
     origin: "http://localhost:5173",
@@ -28,14 +39,6 @@ const corsOptions ={
 app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
-
-app.use(function (req, res, next) {
-res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
-res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-res.setHeader('Access-Control-Allow-Credentials', true);
-next();
-});
 app.use(router);
 
 
