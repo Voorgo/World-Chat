@@ -28,10 +28,13 @@ const corsOptions ={
 app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
-app.use(function (request, response, next) {
-  response.header("Access-Control-Allow-Origin", "*");
-  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
+
+app.use(function (req, res, next) {
+res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+res.setHeader('Access-Control-Allow-Credentials', true);
+next();
 });
 app.use(router);
 
