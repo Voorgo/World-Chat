@@ -59,9 +59,9 @@ export const Login = async (req, res) => {
     );
     res.cookie("refreshToken", refreshToken, {
       maxAge: 24 * 60 * 60 * 1000,
-      sameSite: 'none',
+      sameSite: 'strict',
       secure: true,
-      httpOnly: false
+      httpOnly: true
     });
     res.json({ accessToken });
   } catch (error) {
