@@ -87,7 +87,11 @@ export const Logout = async (req, res) => {
       },
     }
   );
-  res.clearCookie("refreshToken");
+  res.clearCookie("refreshToken", {
+      sameSite: 'none',
+      secure: true,
+      httpOnly: true
+  });
   return res.sendStatus(200);
 };
 
