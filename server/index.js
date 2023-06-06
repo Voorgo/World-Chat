@@ -13,6 +13,8 @@ let rooms = [];
 const app = express();
 const httpServer = createServer(app);
 const PORT = process.env.PORT || 5000;
+app.use(cors({
+    credentials: true}));
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "https://wo-chat.onrender.com");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
