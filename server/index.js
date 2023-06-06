@@ -20,7 +20,7 @@ app.use(function(req, res, next) {
 });
 const socketIO = new Server(httpServer, {
  cors: {
-    origin: "http://localhost:5173",
+    origin: "https://wo-chat.onrender.com",
    credentials:true, 
   }
 });
