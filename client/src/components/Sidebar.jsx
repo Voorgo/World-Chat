@@ -17,7 +17,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const logout = async () => {
     try {
-      await axios.delete("http://localhost:5000/logout");
+      await axios.delete("https://world-chat.onrender.com/logout");
       navigate("/login");
     } catch (error) {
       console.log(error);
