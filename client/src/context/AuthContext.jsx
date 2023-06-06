@@ -15,7 +15,7 @@ const Provider = ({ children }) => {
       const response = await axios.get("https://world-chat.onrender.com/token");
       if (!response.data.accessToken) {
         setUser({
-          name: "Guest",
+          name: `Guest0${Math.floor(10000000 + Math.random() * 90000000)}`,
           isAdmin: false,
           guest: true,
         });
