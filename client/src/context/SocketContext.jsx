@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect } from "react";
 import {io} from "socket.io-client";
 
 const socket = io("https://world-chat.onrender.com");
@@ -9,6 +9,9 @@ export function useSocket() {
 }
 
 export const SocketContextProvider = ({ children }) => {
+  useEffect(() => {
+   return () => socket.disconnect();
+  }, [])
   return (
     <SocketContext.Provider value={socket}>{children}</SocketContext.Provider>
   );
