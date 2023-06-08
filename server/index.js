@@ -85,6 +85,7 @@ socketIO.on("connection", (socket) => {
     });
   });
         socket.on("send_message", (data) => {
+            console.log(data.room)
       socketIO.in(data.room).emit("receive_message", data);
     });
 
