@@ -9,7 +9,7 @@ const Room = ({ room }) => {
 
   const joinRoom = () => {
     socket.emit("joinRoom", { ...room, user: user.name });
-    navigate(`/room/${room.room}`, { state: { username: user.name, room } });
+    navigate(`/room/${room.room}`, { state: { username: user.name, room: room.room } });
   };
 
   const deleteRoom = () => {
