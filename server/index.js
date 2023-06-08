@@ -78,16 +78,15 @@ socketIO.on("connection", (socket) => {
     socket.to(room).emit("chatroom_info", { topic });
     socket.emit("chatroom_info", { topic });
 
-    socket.on("send_message", (data) => {
-      socketIO.in(room).emit("receive_message", data);
-    });
-
     socket.emit("receive_message", {
       message: `Welcome ${user}`,
       username: CHAT_BOT,
       createdtime,
     });
   });
+        socket.on("send_message", (data) => {
+      socketIO.in(data.room).emit("receive_message", data);
+    });
 
   socket.on("leave_room", (data) => {
     let users = [];
