@@ -9,6 +9,7 @@ const ChatInput = () => {
   const location = useLocation();
 
   const sendMessage = (e) => {
+    console.log(location.state.room)
     e.preventDefault();
     if (message !== "") {
       const createdtime = Date.now();
