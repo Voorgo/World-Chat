@@ -16,6 +16,7 @@ const ChatInput = () => {
         message,
         createdtime,
         username: location.state.username,
+        room: location.state.room
       });
       setMessage("");
     }
