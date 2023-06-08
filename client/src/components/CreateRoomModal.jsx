@@ -30,7 +30,7 @@ const CreateRoomModal = ({ isOpen, setIsOpen }) => {
     if (room != "" && Object.keys(location).length > 0) {
       socket.emit("getRooms", { user: user.name, topic, room, location });
       socket.emit("joinRoom", { user: user.name, topic, room, location });
-      navigate(`/room/${room}`, { state: { username: user.name } });
+      navigate(`/room/${room}`, { state: { username: user.name, room } });
     } else {
       setRoom("");
       setTopic("");
