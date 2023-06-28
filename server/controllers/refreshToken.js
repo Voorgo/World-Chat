@@ -4,7 +4,11 @@ import jwt from "jsonwebtoken";
 export const refreshToken = async (req, res) => {
   try {
     const refreshToken = req.cookies.refreshToken;
-    if (!refreshToken) return res.json({ message: "Not Authenticated" });
+    if (!refreshToken) return res.json({ message: "Not Authenticated", user:  {
+          name: `Guest0${Math.floor(10000000 + Math.random() * 90000000)}`,
+          isAdmin: false,
+          guest: true,
+        } });
     const user = await Users.findAll({
       where: {
         refresh_token: refreshToken,
