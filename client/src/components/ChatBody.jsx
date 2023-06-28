@@ -34,7 +34,7 @@ const ChatBody = () => {
     return date.toLocaleString();
   }
   return (
-    <div className="scrollbar pattern relative flex h-[75vh] flex-col items-center gap-4 overflow-y-scroll rounded-xl bg-scroll p-4 sm:h-[85vh]">
+    <div className="scrollbar pattern relative flex h-[65vh] flex-col items-center gap-4 overflow-y-scroll rounded-xl bg-scroll p-4 sm:h-[85vh]">
       {messagesRecieved.map((msg, i) => {
         return (
           <Message
