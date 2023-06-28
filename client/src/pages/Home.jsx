@@ -17,7 +17,7 @@ const Home = () => {
   }, [socket]);
 
   return (
-    <div className="h-[100svh] w-full bg-gradient-to-b from-[#272D41] via-[#000519] to-[#0e1516] sm:h-[100lvh]">
+    <div className="h-[100dvh] w-full bg-gradient-to-b from-[#272D41] via-[#000519] to-[#0e1516]">
       <div className="relative flex h-full w-full flex-col-reverse sm:flex-row">
         <Sidebar />
         <Scene />
