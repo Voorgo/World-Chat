@@ -32,6 +32,7 @@ export default function Column({
   }, []);
   return (
     <mesh
+      renderOrder={3}
       onClick={() => {
         setIsOpen(true);
         setRotate(true);
