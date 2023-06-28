@@ -21,7 +21,7 @@ const Room = ({ room }) => {
       <div className="self-center overflow-ellipsis text-sm font-semibold xs:text-base">
         {room.topic}
       </div>
-      <div className="self-center overflow-ellipsis text-sm font-semibold xs:text-base">
+      <div className="self-center truncate text-sm font-semibold xs:text-base">
         {room.user}
       </div>
       <div className="flex gap-2">
