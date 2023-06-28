@@ -6,9 +6,7 @@ import jwt_decode from "jwt-decode";
 const AuthContext = createContext({});
 
 const Provider = ({ children }) => {
-  const [user, setUser] = useState({name: `Guest0${Math.floor(10000000 + Math.random() * 90000000)}`,
-          isAdmin: false,
-          guest: true});
+  const [user, setUser] = useState({});
   const [data, setData] = useState([]);
   let location = useLocation();
 
@@ -16,11 +14,7 @@ const Provider = ({ children }) => {
     try {
       const response = await axios.get("https://world-chat.onrender.com/token");
       if (!response.data.accessToken) {
-        setUser({
-          name: `Guest0${Math.floor(10000000 + Math.random() * 90000000)}`,
-          isAdmin: false,
-          guest: true,
-        });
+       console.log(response)
       } else {
         const decoded = jwt_decode(response.data.accessToken);
         setUser({
