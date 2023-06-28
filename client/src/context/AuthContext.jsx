@@ -14,7 +14,7 @@ const Provider = ({ children }) => {
     try {
       const response = await axios.get("https://world-chat.onrender.com/token");
       if (!response.data.accessToken) {
-       console.log(response)
+       setUser(response.data.user)
       } else {
         const decoded = jwt_decode(response.data.accessToken);
         setUser({
