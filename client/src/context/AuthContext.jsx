@@ -6,7 +6,9 @@ import jwt_decode from "jwt-decode";
 const AuthContext = createContext({});
 
 const Provider = ({ children }) => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({name: `Guest0${Math.floor(10000000 + Math.random() * 90000000)}`,
+          isAdmin: false,
+          guest: true});
   const [data, setData] = useState([]);
   let location = useLocation();
 
