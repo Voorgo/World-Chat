@@ -13,7 +13,7 @@ const Chat = () => {
     };
   }, []);
   return (
-    <div className="grid h-[100svh] grid-rows-[60px_4fr] gap-3 bg-gray-200 p-3 sm:grid-cols-[1fr_4fr] sm:h-[100lvh] sm:grid-rows-none">
+    <div className="grid h-[100dvh] grid-rows-[60px_4fr] gap-3 bg-gray-200 p-3 sm:grid-cols-[1fr_4fr] sm:grid-rows-none">
       <ChatSideBar />
       <div className="rounded-xl bg-white">
         <ChatBody />
