@@ -16,7 +16,7 @@ function Globe({ radius }) {
     new URL("../assets/globe2.jpg", import.meta.url).href
   );
   return (
-    <mesh rotation={[0, -Math.PI / 2, 0]}>
+    <mesh rotation={[0, -Math.PI / 2, 0]} renderOrder={3}>
       <sphereGeometry args={[radius, 64, 64]} />
       <shaderMaterial
         receiveShadow
@@ -37,7 +37,7 @@ function Globe({ radius }) {
 
 function Atmosphere({ radius }) {
   return (
-    <mesh>
+    <mesh renderOrder={2}>
       <sphereGeometry args={[radius, 64, 64]} />
       <shaderMaterial
         attach="material"
